@@ -1,7 +1,7 @@
 /// Configuration parameters
 
 pub const PROTOCOL: &str = "http://";
-pub const HOST_PORT: &str = "127.0.0.1:8080";
+pub const HOST_PORT: &str = "127.0.0.1:5000";
 
 pub const OK_PAGE: &str = "html_pages/ok.html";
 pub const NOTFOUND_PAGE: &str = "html_pages/notfound.html";
