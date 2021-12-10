@@ -56,12 +56,12 @@ $ docker build -t pokedex .
 $ docker run -p 5000:5000
 ```
 
-Finally, with curl (or by typing on the browser the url):
+Finally, the request can be sent via curl (or by typing on the browser the url):
 ```bash
 $ curl http://127.0.0.1:5000/pokemon/ditto
 ```
 with result
-```json
+```bash
 {
     name: ditto,
     description: "Capable of copying an enemy's genetic code to instantly transform itself into a duplicate of the enemy.",
@@ -72,7 +72,7 @@ with result
 
 or
 ```bash
-http://127.0.0.1:5000/pokemon/translated/mewtwo
+$ curl http://127.0.0.1:5000/pokemon/translated/mewtwo
 ```
 with result
 ```bash
@@ -112,6 +112,6 @@ $ cargo test -- --nocapture
 This application has been conceived to be used in a test environment.
 If you want to use it in production environment be aware of:
 - add an autentication system
-- add log with widely libraries like the env_logger crate, avoiding println!()
+- add log like the env_logger crate, avoiding println!()
 - rember to use the '--release' flag when building or running
 - in general, use a framework, to ease of modification and to benefit from large user-based adoption.
