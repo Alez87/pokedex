@@ -59,7 +59,7 @@ or
 http://127.0.0.1:8080/pokemon/translated/mewtwo
 ```
 with result
-```json
+```bash
 {
     name: mewtwo,
     description: "Created by a scientist after years of horrific gene splicing and dna engineering experiments, it was.",
@@ -100,7 +100,7 @@ $ cargo test -- --nocapture
 ## Production notes
 
 This application has been conceived to be used in a test environment.
-if you want to use it in production environment be aware of:
+If you want to use it in production environment be aware of:
 - add an autentication system
 - add log with widely libraries like the env_logger crate, avoiding println!()
 - rember to use the '--release' flag when building or running
