@@ -20,7 +20,7 @@ pub fn create_server() -> Result<(), Box<dyn Error>> {
         async_std::task::spawn(async {
             match handle_connection(stream).await {
                 Ok(_) => (),
-                Err(_) => println!("Error during connection."),
+                Err(e) => println!("Error during connection: {}", e),
             };
         });
     }
@@ -30,7 +30,7 @@ pub fn create_server() -> Result<(), Box<dyn Error>> {
 /// Handle the incoming request.
 async fn handle_connection(mut stream: TcpStream) -> Result<(), Box<dyn Error>> {
     let mut buffer = [0; 1024];
-    stream.read_exact(&mut buffer)?;
+    stream.read(&mut buffer)?;
     println!("Request: {}", String::from_utf8_lossy(&buffer[..]));
 
     let endpoint1: &str = &format!("{} {}", config::ENDPOINT_GET_METHOD, config::ENDPOINT1_NAME);
