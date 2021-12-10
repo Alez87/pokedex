@@ -1,3 +1,6 @@
+
+[![CI](https://github.com/Alez87/pokedex/actions/workflows/ci.yml/badge.svg)](https://github.com/Alez87/pokedex/actions/workflows/ci.yml)
+
 -------------------------------
 
 ## Prerequisites
@@ -23,26 +26,39 @@ $ rustup default nightly-2021-05-30
 
 The 2 available routes are:
 
-- Endpoint1: '/pokemon/'
-- Endpoint2: '/pokemon/translated/'
+- Endpoint1: '/pokemon/{name}'
+- Endpoint2: '/pokemon/translated/{name}'
 
 -------------------------------
 
 ## Example of Usage
 
-First
+First, 
 
  - Check 'src/lib/config' to specify the configurations you prefer
 
-and run with:
+then you can run in different ways:
 
+- directly with 'run' command:
 ```bash
 $ cargo run --release
 ```
 
-Finally, open the browser and type:
+- building the compiled version before and then execute it:
 ```bash
-http://127.0.0.1:8080/pokemon/ditto
+$ cargo build --release
+$ ./target/release/pokedex
+```
+
+- using the Docker container
+```bash
+$ docker build -t pokedex .
+$ docker run -p 5000:5000
+```
+
+Finally, with curl (or by typing on the browser the url):
+```bash
+$ curl http://127.0.0.1:5000/pokemon/ditto
 ```
 with result
 ```json
@@ -56,7 +72,7 @@ with result
 
 or
 ```bash
-http://127.0.0.1:8080/pokemon/translated/mewtwo
+http://127.0.0.1:5000/pokemon/translated/mewtwo
 ```
 with result
 ```bash
@@ -66,12 +82,6 @@ with result
     habitat: "rare",
     is_legendary: true
 }
-```
-
-If you only want to only build the library:
-
-```bash
-$ cargo build --release
 ```
 
 -------------------------------
